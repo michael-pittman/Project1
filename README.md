@@ -1,7 +1,5 @@
 # Project-1
 
-# Open Page with no sign-ins.
-
 ## File
 
 	Master located in: Michael's Github Repository.
