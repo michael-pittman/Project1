@@ -14,7 +14,9 @@
 
 ## Presentation
 
-	* Create a Jumbotron Bootstrap and display Application presentation and objectives. 
+	* Create a Jumbotron Bootstrap and display:
+		1. Application presentation and objectives. 
+		2. Data Collection (City, Country and Dates)
 
 	* Create a Bootstrap Layout with Two Rows and 4 Columns. 
 		1. First Row for information display.
