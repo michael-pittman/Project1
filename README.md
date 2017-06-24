@@ -7,7 +7,7 @@
 
 ## Theme
 
-	Name: TravelBud
+	Name: Travel Bot
 	Fucntion: Travel Prepareness Application. 
 
 ## Presentation
