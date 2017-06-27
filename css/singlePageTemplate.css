@@ -259,6 +259,8 @@ footer {
 .hidden {
 	display: none;
 }
+#search {
+}
 
 /* Mobile */
 @media (max-width: 320px) {
