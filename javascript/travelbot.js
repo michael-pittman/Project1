@@ -1,13 +1,12 @@
 
 $(document).ready(function() {
-//var seached = "Washington"	
-var queryURL = "http://api.wunderground.com/api/eb190ccc88c7b1f8/geolookup/conditions/q/IA/Washington.json" ;
-	
-	
+var seached = "lawton"
+	//$(#ofinputfeild).html(val().trim)
+var queryURL = "http://api.wunderground.com/api/eb190ccc88c7b1f8/geolookup/conditions/q/IA/" + seached + ".json";
 	
 	$.ajax({
   	url : queryURL
-//  	dataType : "jsonp",
+	
   }).done(function(response) {
   	
 	var location = response.location.city;
@@ -21,9 +20,6 @@ var queryURL = "http://api.wunderground.com/api/eb190ccc88c7b1f8/geolookup/condi
 });
 	
 	
-//var weatherKey = "eb190ccc88c7b1f8"
 
-//	
-	
 	
 	
