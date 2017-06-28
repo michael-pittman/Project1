@@ -1,5 +1,5 @@
 
-jQuery(document).ready(function() {
+$(document).ready(function() {
   $.ajax({
   	url : "http://api.wunderground.com/api/eb190ccc88c7b1f8/geolookup/conditions/q/IA/Cedar_Rapids.json",
   	dataType : "jsonp",
