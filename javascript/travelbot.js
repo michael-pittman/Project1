@@ -1,5 +1,6 @@
 
 $(document).ready(function() {
+<<<<<<< HEAD
 var seached = "lawton"
 	//$(#ofinputfeild).html(val().trim)
 var queryURL = "http://api.wunderground.com/api/eb190ccc88c7b1f8/geolookup/conditions/q/IA/" + seached + ".json";
@@ -7,6 +8,11 @@ var queryURL = "http://api.wunderground.com/api/eb190ccc88c7b1f8/geolookup/condi
 	$.ajax({
   	url : queryURL
 	
+=======
+  $.ajax({
+  	url : "http://api.wunderground.com/api/eb190ccc88c7b1f8/geolookup/conditions/q/IA/Cedar_Rapids.json",
+  	dataType : "jsonp",
+>>>>>>> 7ee2688f34dc3731c39b03cc419018c6c0c15683
   }).done(function(response) {
   	
 	var location = response.location.city;
@@ -21,7 +27,16 @@ var queryURL = "http://api.wunderground.com/api/eb190ccc88c7b1f8/geolookup/condi
   });
 });
 	
+<<<<<<< HEAD
 	
 
+=======
+/*	
+var weatherKey = "eb190ccc88c7b1f8"
+var seached = ""	
+var queryURL = "http://api.wunderground.com/api/" + weatherKey + "/geolookup/conditions/q/IA/" + serched + ".json" ;
+	*/
+	
+>>>>>>> 7ee2688f34dc3731c39b03cc419018c6c0c15683
 	
 	
