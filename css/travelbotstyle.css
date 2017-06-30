@@ -152,11 +152,10 @@ ul li:hover a {
 /* Parallax Section */
 .banner {
 	background-color: #2D9AB7;
-	background-image: url(../images/parallax.png);
 	height: 400px;
-	background-attachment: fixed;
 	background-size: cover;
 	background-repeat: no-repeat;
+	margin: 0 auto;
 }
 .parallax {
 	color: #FFFFFF;
@@ -254,7 +253,7 @@ footer .footer_column p {
 	padding-top: 60px;
 	padding-bottom: 60PX;
 	margin-bottom: 0px;
-	background-image: url(../images/pattern.png);
+	background-image: url(../images/travel-banner.jpg);
 	background-repeat: repeat;
 }
 footer {
