@@ -1,4 +1,10 @@
 
+var cityList = [];
+var countryList = [];
+var separation = [];
+var selectedIndex;
+var countrySearch;
+
 function resetEntries() {
 	$("#city-input").val("");
 	$("#country-input").val("");
@@ -15,11 +21,12 @@ $(document).ready(function(){
 	var firstLetters;
 	var cityElements;
 	var countryElements;
-	var cityList = [];
-	var countryList = [];
-	var selectedIndex;
-
+	
 	$("#city-input").keyup(function() {
+		cityList = [];
+		countryList = [];
+		separation = [];
+		countrySearch = "";
 		firstLetters = $(this).val().trim();
 		var autocompleteURL = "http://autocomplete.wunderground.com/aq?&cb=call=?";
 
@@ -40,9 +47,18 @@ $(document).ready(function(){
 			});
 			$("#city-input").autocomplete({
 				source: cityList,
+				appendTo: "#cityAutocomplete",
 				select: function(event, ui){
 					selectedIndex = $.inArray(ui.item.value,$("#city-input").autocomplete("option", "source"));
-					$("#country-input").val(countryList[selectedIndex]);
+					separation = cityList[selectedIndex].split(",");
+					console.log(separation);
+					if (countryList[selectedIndex] === "US") {
+						$("#country-input").val("United States");
+						countrySearch = separation[1];
+					} else {
+						$("#country-input").val(separation[1]);
+						countrySearch = countryList[selectedIndex];
+					}
 				}
 			});				
 		});
@@ -52,16 +68,17 @@ $(document).ready(function(){
 $("#add-entry").on("click", function(event) {
     event.preventDefault();
     resetResults();
-    var citySearch = $("#city-input").val().trim();
-    var countrySearch = $("#country-input").val().trim();
- 	var queryURL = "http://api.wunderground.com/api/eb190ccc88c7b1f8/geolookup/conditions/q/" + countrySearch + "/" + citySearch + ".json";
+    var apiKey = "b9907322a6922ec3"; /*Hernan's API Key*/
+    var citySearch = separation[0];
+  	var queryURL = "http://api.wunderground.com/api/" + apiKey + "/geolookup/conditions/q/" + countrySearch + "/" + citySearch + ".json";
 	
 	$.ajax({
 	  	url : queryURL,
 	  	method: "GET"	
 	}).done(function(response) {
+		console.log(response);
 		var city = response.location.city;
-		var country = response.location.country;
+		var country = separation[1];
 		var temp_f = response.current_observation.temp_f;
 		var temp_c = response.current_observation.temp_c;
 		$("#fahrenheit").append(temp_f + "F°");

@@ -4,9 +4,10 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Travel Bot</title>
-  <link href="css/travelbotstyle.css" rel="stylesheet" type="text/css">  
+  <title>Travel Bot</title>   
+  <link href="css/reset.css" rel="stylesheet" type="text/css"> 
   <link href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" rel="Stylesheet"></link>
+  <link href="css/travelbotstyle.css" rel="stylesheet" type="text/css"> 
   <script src="http://use.edgefonts.net/source-sans-pro:n2:default.js" type="text/javascript"></script>
   <script>var __adobewebfontsappname__="dreamweaver"</script>
 </head>
@@ -21,14 +22,15 @@
     <h2 class="hero_header">TRAVELERS AWARENESS <span class="light">VERY IMPORTANT TIPS FOR YOU</span></h2>
     <p class="tagline">INTERESTED IN WHAT WILL THE WEATHER BE LIKE IN ICELAND DURING THE 4TH OF JULY?</p>
     <form id="info-form">
-      <label for="city-input">Enter Destination City:</label>
+      <label for="city-input">Enter Destination City:</label><br>
       <input type="text" id="city-input">
-      <label for="country-input">Country:</label>
+      <div id="cityAutocomplete"></div><br>
+      <label for="country-input">Country:</label><br>
       <input type="text" id="country-input"><br>
-      <label for="startDate-input">Check-in Date:</label>
-      <input class="dateCollection" id="startDate-input" name="arrivalDate" type="text" value="" placeholder="mm/dd/yyyy">
-      <label for="finishDate-input">Check-out Date:</label>
-      <input class="dateCollection" id="finishDate-input" name="departureDate" type="text" value="" placeholder="mm/dd/yyyy">
+      <label for="startDate-input">Check-in Date:</label><br>
+      <input class="dateCollection" id="startDate-input" name="startDate" type="text" value="" placeholder="mm/dd/yyyy"><br>
+      <label for="finishDate-input">Check-out Date:</label><br>
+      <input class="dateCollection" id="finishDate-input" name="finishDate" type="text" value="" placeholder="mm/dd/yyyy"><br><br>
       <input id="add-entry" type="submit" value="Submit">
     </form>
   </section>
@@ -37,10 +39,12 @@
   <div class="gallery">
     <div class="thumbnail">
       <h1 class="stats">DESTINATION FORECAST</h1>
-      <p id="fahrenheit"></p>
-      <p id="celsius"></p>
-      <p id="cityResult"></p>
-      <p id="countryResult"></p>
+        <div id="api1results">
+          <p id="fahrenheit"></p>
+          <p id="celsius"></p>
+          <p id="cityResult"></p>
+          <p id="countryResult"></p>
+        </div>
     </div>
     <div class="thumbnail">
       <h1 class="stats">SUGGESTED ITEMS TO TAKE WITH YOU</h1>
