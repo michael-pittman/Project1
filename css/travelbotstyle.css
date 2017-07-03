@@ -77,13 +77,17 @@ ul li:hover a {
 }
 /* Hero Section */
 .hero {
+	background-image: url(../images/planefront.jpg);
+	background-size: cover;
+	background-repeat: no-repeat;
 	background-color: #B3B3B3;
-	padding-top: 150px;
-	padding-bottom: 150px;
+	padding-top: 20px;
+	padding-bottom: 30px;
 }
 .light {
 	font-weight: bold;
-	color: #717070;
+	color: black;
+	/*color: #717070;*/
 }
 .tagline {
 	text-align: center;
@@ -92,6 +96,31 @@ ul li:hover a {
 	font-weight: lighter;
 	text-transform: uppercase;
 	letter-spacing: 1px;
+}
+
+#info-form {
+	padding: 20px 20px 0 20px;
+	color: #FFFFFF;
+}
+
+#city-input {
+	position: relative;
+}
+
+#cityAutocomplete {
+	position: absolute;
+}
+
+.ui-menu-item a {
+	border: 2px;
+	background: #FFFFFF;
+	font-size: 10px;
+	cursor: default;
+	overflow: auto;
+}
+
+.ui-menu-item a:hover {
+	background: #B3B3B3;
 }
 /* About Section */
 .text_column {
@@ -117,6 +146,11 @@ ul li:hover a {
 	color: #717070;
 	margin-bottom: 5px;
 }
+
+#api1results p {
+	color: black;
+}
+
 .gallery {
 	clear: both;
 	display: inline-block;
@@ -152,6 +186,8 @@ ul li:hover a {
 }
 /* Parallax Section */
 .banner {
+	padding-top: 20px;
+	padding-bottom: 30px;
 	background-color: #2D9AB7;
 	height: 400px;
 	background-size: cover;
@@ -482,15 +518,4 @@ nav ul li {
 	margin-top: 0px;
 	padding-top: 0px;
 }
-
-#city-input {
-	
-}
-
-.ui-menu .ui-menu-item a {
-	border: 1px;
-	background: #2D9AB7;
-	font-size: 10px;
-	cursor: default;
-	overflow: auto;
 }
