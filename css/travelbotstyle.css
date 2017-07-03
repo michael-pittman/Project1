@@ -121,6 +121,7 @@ ul li:hover a {
 	clear: both;
 	display: inline-block;
 	width: 100%;
+	height: 160px;
 	background-color: #FFFFFF;
 	/* [disabled]min-width: 400px;
 */
@@ -481,4 +482,15 @@ nav ul li {
 	margin-top: 0px;
 	padding-top: 0px;
 }
+
+#city-input {
+	
+}
+
+.ui-menu .ui-menu-item a {
+	border: 1px;
+	background: #2D9AB7;
+	font-size: 10px;
+	cursor: default;
+	overflow: auto;
 }
