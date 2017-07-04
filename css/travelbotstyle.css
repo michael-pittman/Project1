@@ -190,10 +190,12 @@ ul li:hover a {
 	padding-bottom: 30px;
 	background-color: #2D9AB7;
 	height: 400px;
-	background-size: cover;
+	background-image: url(../images/state.jpg);
+	background-position: center center;
 	background-repeat: no-repeat;
-	margin: 0 auto;
+	background-size: auto 100%;
 }
+
 .parallax {
 	color: #FFFFFF;
 	text-align: right;
