@@ -21,7 +21,7 @@ $(document).ready(function(){
 	var firstLetters;
 	var cityElements;
 	var countryElements;
-	
+
 	$("#city-input").keyup(function() {
 		cityList = [];
 		countryList = [];
@@ -38,7 +38,7 @@ $(document).ready(function(){
 			},
 			crossDomain: true
 
-		}).done(function(response) {			
+		}).done(function(response) {
 			$.each(response.RESULTS, function(i, element){
 				cityElements = (response.RESULTS[i].name);
 				countryElements = (response.RESULTS[i].c);
@@ -60,7 +60,7 @@ $(document).ready(function(){
 						countrySearch = countryList[selectedIndex];
 					}
 				}
-			});				
+			});
 		});
 	});
 });
@@ -71,16 +71,19 @@ $("#add-entry").on("click", function(event) {
     var apiKey = "b9907322a6922ec3"; /*Hernan's API Key*/
     var citySearch = separation[0];
   	var queryURL = "http://api.wunderground.com/api/" + apiKey + "/geolookup/conditions/q/" + countrySearch + "/" + citySearch + ".json";
-	
+
 	$.ajax({
 	  	url : queryURL,
-	  	method: "GET"	
+	  	method: "GET"
 	}).done(function(response) {
 		console.log(response);
 		var city = response.location.city;
 		var country = separation[1];
 		var temp_f = response.current_observation.temp_f;
 		var temp_c = response.current_observation.temp_c;
+		var lat = response.location.lat;
+		var lon = response.location.lon;
+		var state_dept = response.location.country_name;
 		$("#fahrenheit").append(temp_f + "F°");
 		$("#celsius").append(temp_c + "C°");
 		$("#cityResult").append(city);
@@ -90,7 +93,25 @@ $("#add-entry").on("click", function(event) {
 		console.log(country);
 		console.log(temp_f);
 		console.log(temp_c);
+		console.log(lat);
+		console.log(lon);
+
 		resetEntries();
+
+// state department AJAX call is chained. uses location from first api ---------->
+
+		$.ajax({
+		  	url : "https://www.state.gov/api/v1/?command=get_country_fact_sheets&fields=title,title,terms&terms="+state_dept+":any,"+state_dept+":any"
+
+		  }).done(function(response) {
+				var state_dept_country = (response.country_fact_sheets [0].title)
+				var state_dept_lower = state_dept_country.toLowerCase()
+				var state_dept_url = 'https://travel.state.gov/content/passports/en/country/'+state_dept_lower+'.html'
+				console.log(state_dept_url);
+
+			$("#state_dept_link").attr("data_Url", state_dept_url);
+			$("#click_here").attr("href", state_dept_url);
+
+			});
 	});
 });
-
