@@ -4,6 +4,8 @@ var countryList = [];
 var separation = [];
 var selectedIndex;
 var countrySearch;
+var latitude
+var longitude
 
 function resetEntries() {
 	$("#city-input").val("");
@@ -17,6 +19,9 @@ function resetResults() {
 	$("#countryResult").html("");
 };
 
+
+
+//events ------------>
 $(document).ready(function(){
 	var firstLetters;
 	var cityElements;
@@ -72,6 +77,8 @@ $("#add-entry").on("click", function(event) {
     var citySearch = separation[0];
   	var queryURL = "http://api.wunderground.com/api/" + apiKey + "/geolookup/conditions/q/" + countrySearch + "/" + citySearch + ".json";
 
+
+
 	$.ajax({
 	  	url : queryURL,
 	  	method: "GET"
@@ -95,8 +102,11 @@ $("#add-entry").on("click", function(event) {
 		console.log(temp_c);
 		console.log(lat);
 		console.log(lon);
-
+		latitude = parseInt(lat)
+		longitude = parseInt(lon)
 		resetEntries();
+
+		$("#map_script").append("<script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyBoBixEgDuSpTPjepvL_RGMUlHUY0UlAgs&libraries=places&callback=initMap' async defer></script>")
 
 // state department AJAX call is chained. uses location from first api ---------->
 
@@ -115,3 +125,47 @@ $("#add-entry").on("click", function(event) {
 			});
 	});
 });
+//maps ------------>
+
+	var map;
+  var infowindow;
+
+  function initMap() {
+    var pyrmont = {lat: latitude, lng: longitude};
+
+    map = new google.maps.Map(document.getElementById('map'), {
+      center: pyrmont,
+      zoom: 15
+    });
+
+    infowindow = new google.maps.InfoWindow();
+    var service = new google.maps.places.PlacesService(map);
+    service.nearbySearch({
+      location: pyrmont,
+      radius: 500,
+      type: ['resturant']
+    }, callback);
+  }
+
+  function callback(results, status) {
+    if (status === google.maps.places.PlacesServiceStatus.OK) {
+      for (var i = 0; i < results.length; i++) {
+        createMarker(results[i]);
+      }
+    }
+  }
+
+  function createMarker(place) {
+    var placeLoc = place.geometry.location;
+    var marker = new google.maps.Marker({
+      map: map,
+      position: place.geometry.location
+    });
+
+    google.maps.event.addListener(marker, 'click', function() {
+      infowindow.setContent(place.name);
+      infowindow.open(map, this);
+    });
+
+
+  }
