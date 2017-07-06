@@ -33,7 +33,7 @@ $(document).ready(function(){
 		separation = [];
 		countrySearch = "";
 		firstLetters = $(this).val().trim();
-		var autocompleteURL = "http://autocomplete.wunderground.com/aq?&cb=call=?";
+		var autocompleteURL = "https://autocomplete.wunderground.com/aq?&cb=call=?";
 
 		$.ajax({
 			url: autocompleteURL,
@@ -75,7 +75,7 @@ $("#add-entry").on("click", function(event) {
     resetResults();
     var apiKey = "b9907322a6922ec3"; /*Hernan's API Key*/
     var citySearch = separation[0];
-  	var queryURL = "http://api.wunderground.com/api/" + apiKey + "/geolookup/conditions/q/" + countrySearch + "/" + citySearch + ".json";
+  	var queryURL = "https://api.wunderground.com/api/" + apiKey + "/geolookup/conditions/q/" + countrySearch + "/" + citySearch + ".json";
 
 
 
