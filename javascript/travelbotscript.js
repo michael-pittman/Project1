@@ -102,8 +102,8 @@ $("#add-entry").on("click", function(event) {
 		console.log(temp_c);
 		console.log(lat);
 		console.log(lon);
-		latitude = parseInt(lat)
-		longitude = parseInt(lon)
+		latitude = parseFloat(lat)
+		longitude = parseFloat(lon)
 		resetEntries();
 
 		$("#map_script").append("<script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyBoBixEgDuSpTPjepvL_RGMUlHUY0UlAgs&libraries=places&callback=initMap' async defer></script>")
