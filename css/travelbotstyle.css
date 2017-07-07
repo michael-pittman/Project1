@@ -305,6 +305,9 @@ footer {
 }
 #chat {
 }
+#messagePost {
+	background-color: #FFFFFF;
+}
 
 /* Mobile */
 @media (max-width: 320px) {

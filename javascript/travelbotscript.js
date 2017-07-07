@@ -170,70 +170,33 @@ $("#add-entry").on("click", function(event) {
 
   }
 
+$(function() {
 
+	var config = {
+	    apiKey: "AIzaSyCnLZn5MPceKQyiETJAcaQ3QgYWKESp3Uk",
+	    authDomain: "travelbot-chatroom.firebaseapp.com",
+	    databaseURL: "https://travelbot-chatroom.firebaseio.com",
+	    projectId: "travelbot-chatroom",
+	    storageBucket: "travelbot-chatroom.appspot.com",
+	    messagingSenderId: "13555853017"
+	  };
 
-//FireBase --------->
-// Initialize Firebase
-var config = {
-	apiKey: "AIzaSyCP7gyAk2MT2rY5JFD2i9b0WDHXbGUn7mQ",
-  authDomain: "project1-1499294091466.firebaseapp.com",
-  databaseURL: "https://project1-1499294091466.firebaseio.com",
-  projectId: "project1-1499294091466",
-  storageBucket: "",
-  messagingSenderId: "258284106684"
-};
+	firebase.initializeApp(config);
 
-firebase.initializeApp(config);
+  	var chatRef = firebase.database().ref();
 
-var dataRef = firebase.database();
-
-// Initial Values
-var name = "";
-var email = "";
-var comment = "";
-
-// Capture Button Click
-$("#add-user").on("click", function(event) {
-	event.preventDefault();
-
-	// YOUR TASK!!!
-	// Code in the logic for storing and retrieving the most recent user.
-	// Don't forget to provide initial data to your Firebase database.
-	name = $("#name-input").val().trim();
-	email = $("#email-input").val().trim();
-	comment = $("#comment-input").val().trim();
-
-	// Code for the push
-	dataRef.ref().push({
-
-		name: name,
-		email: email,
-		comment: comment,
-		dateAdded: firebase.database.ServerValue.TIMESTAMP
+  	$("#message-input").keypress(function (p) {
+	    if (p.keyCode == 13) {
+	      var name = $("#name-input").val();
+	      var message = $("#message-input").val();
+	      chatRef.push({name:name, message:message});
+	      $("#message-input").val("");
+	    }
 	});
-});
 
-// Firebase watcher + initial loader HINT: This code behaves similarly to .on("value")
-dataRef.ref().on("child_added", function(childSnapshot) {
-
-	// Log everything that's coming out of snapshot
-
-	console.log(childSnapshot.val().name);
-	console.log(childSnapshot.val().email);
-	console.log(childSnapshot.val().comment);
-	console.log(childSnapshot.val().joinDate);
-
-	
-// Handle the errors
-}, function(errorObject) {
-	console.log("Errors handled: " + errorObject.code);
-});
-
-dataRef.ref().orderByChild("dateAdded").limitToLast(1).on("child_added", function(snapshot) {
-
-	// Change the HTML to reflect
-	$("#name-display").html(snapshot.val().name);
-	$("#email-display").html(snapshot.val().email);
-	$("#age-display").html(snapshot.val().age);
-	$("#comment-display").html(snapshot.val().comment);
+	chatRef.limitToLast(10).on("child_added", function (snapshot) {
+	    var messagefire = snapshot.val();
+	    var messageElement = $("<div/>").text(messagefire.name + ": " + messagefire.message);
+	    messageElement.appendTo("#messagePost");
+	});
 });
