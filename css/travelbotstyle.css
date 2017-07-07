@@ -307,10 +307,17 @@ footer {
 }
 #messagePost {
 	background-color: #FFFFFF;
+	opacity: 0.7;
+	text-align: center;
+	text-shadow: -1px -1px 24px #759FB4;
+	font-weight: bold;
+	font-size: 2em;
+	margin-top: 5px;
 }
 
 /* Mobile */
 @media (max-width: 320px) {
+
 .logo {
 	width: 100%;
 	text-align: center;
@@ -318,6 +325,8 @@ footer {
 	margin-right: 0px;
 	margin-bottom: 0px;
 	margin-left: 0px;
+	font-weight: bold;
+	font-size: 3em;
 }
 .container header nav {
 	margin-top: 0px;

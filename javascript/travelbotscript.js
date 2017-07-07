@@ -142,8 +142,8 @@ $("#add-entry").on("click", function(event) {
     var service = new google.maps.places.PlacesService(map);
     service.nearbySearch({
       location: pyrmont,
-      radius: 500,
-      type: ['resturant']
+      radius: 1000,
+      type: ['museum']
     }, callback);
   }
 
