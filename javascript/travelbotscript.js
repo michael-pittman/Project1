@@ -19,8 +19,6 @@ function resetResults() {
 	$("#countryResult").html("");
 };
 
-
-
 //events ------------>
 $(document).ready(function(){
 	var firstLetters;
@@ -198,5 +196,6 @@ $(function() {
 	    var messagefire = snapshot.val();
 	    var messageElement = $("<div/>").text(messagefire.name + ": " + messagefire.message);
 	    messageElement.appendTo("#messagePost");
+	    $("#messagePost").scrollTop($("#messagePost")[0].scrollHeight);
 	});
 });
